@@ -1,0 +1,4 @@
+docker_py==1.10.6
+Flask==1.1.2
+requests==2.25.1
+urllib3==1.26.5

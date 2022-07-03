@@ -1,0 +1,395 @@
+{
+    "CVE-2021-44228":{
+        "name":"Log4shell",
+        "description":"Log4Shell is a software vulnerability in Apache Log4j 2, a popular Java library for logging error messages in applications. The vulnerability, published as CVE-2021-44228, enables a remote attacker to take control of a vulnerable device on the internet.",
+        "score":10.0,
+        "severity":"Critical",
+        "tags":[
+            "rce",
+            "java",
+            "log4j",
+            "jndi"
+        ],
+        "references":[
+            "https://www.lunasec.io/docs/blog/log4j-zero-day/",
+            "https://nvd.nist.gov/vuln/detail/CVE-2021-44228"
+        ],
+        "year":"2021"
+    },
+    
+    "CVE-2014-6271":{
+        "name":"Shellshock",
+        "description":"Shellshock is a vulnerability that allows systems containing a vulnerable version of Bash to be exploited to execute commands with higher privileges. This allows attackers to potentially take over that system. The vulnerable CGI can be accessed at /cgi-bin/test.cgi on the web server.",
+        "score":9.8,
+        "severity":"Critical",
+        "tags":[
+            "rce", 
+            "bash",
+            "shell",
+            "http"
+        ],
+        "references":[
+            "https://blog.cloudflare.com/inside-shellshock/",
+            "https://securityintelligence.com/articles/shellshock-vulnerability-in-depth/",
+            "https://nvd.nist.gov/vuln/detail/CVE-2014-6271"
+        ],
+        "year":"2014"
+    },
+    
+    "CVE-2012-1823":{
+        "name":"PHP CGI Argument Injection",
+        "description":"PHP-CGI is a file called sapi/cgi/cgi_main.c in PHP before 5.3.12 and 5.4.x before 5.4.2 configured as a CGI script. But this file does not properly handle query strings that lack an equal sign special character (=), which allows remote attackers to execute arbitrary code by placing command-line options in query string, related to lack of skipping a certain php_getopt for the 'd' case.",
+        "score":7.5,
+        "severity":"High",
+        "tags":[
+            "rce", 
+            "php",
+            "cgi",
+            "http"
+        ],
+        "references":[
+            "https://www.cvedetails.com/cve/CVE-2012-1823/",
+            "https://nvd.nist.gov/vuln/detail/cve-2012-1823"
+        ],
+        "year":"2012"
+    },
+
+    "CVE-2016-3714":{
+        "name":"ImageTragick",
+        "description":"There are multiple vulnerabilities in ImageMagick and this CVE is focusing on insufficient shell characters filtering that can leads to potentially RCE. This potential RCE can happen during conversion of several file formats with insufficient filtering for filename. There are some coders in ImageMagick version before 6.9.3-10 and 7.x before 7.0.1-1 that allow RCE, such as EPHEMERAL, HTTPS, MVG, MSL, TEXT, SHOW, WIN, and PLT.",
+        "score":8.4,
+        "severity":"High",
+        "tags":[
+            "rce", 
+            "ImageMagick",
+            "shell",
+            "metacharacters",
+            "image"
+        ],
+        "references":[
+            "https://imagetragick.com",
+            "https://nvd.nist.gov/vuln/detail/CVE-2016-3714"
+        ],
+        "year":"2016"
+    },
+
+    "CVE-2016-10033":{
+        "name":"PHPMailer Remote Code Execution",
+        "description":"PHPMailer before 5.2.18 is vulnerable to a remote code execution vulnerability through the mailSend function. The vulnerability allows an attacker to pass extra parameters to the mail command and consequently execute arbitrary code via a \" (backslash double quote) in a crafted Sender property. The webroot of the web server is located at /www.",
+        "score":9.8,
+        "severity":"Critical",
+        "tags":[
+            "rce",
+            "mail",
+            "php",
+            "http"
+        ],
+        "references":[
+            "https://nvd.nist.gov/vuln/detail/CVE-2016-10033",
+            "https://www.fortinet.com/blog/threat-research/analysis-of-phpmailer-remote-code-execution-vulnerability-cve-2016-10033"
+        ],
+        "year":"2016"
+    },
+
+    "CVE-2017-5638":{
+        "name":"Struts-Shock",
+        "description":"Struts is vulnerable to remote command injection attacks through incorrectly parsing an attacker’s invalid Content-Type HTTP header. The Struts vulnerability allows these commands to be executed under the privileges of the Web server",
+        "score":10.0,
+        "severity":"Critical",
+        "tags":[
+            "rce", 
+            "apache",
+            "struts",
+            "http"
+        ],
+        "references":[
+            "https://www.trendmicro.com/en_id/research/17/c/cve-2017-5638-apache-struts-vulnerability-remote-code-execution.html",
+            "https://nvd.nist.gov/vuln/detail/cve-2017-5638"
+        ],
+        "year":"2017"
+    },
+
+    "CVE-2017-7657":{
+        "name":"Eclipse Jetty HTTP Smuggling",
+        "description":"Eclipse Jetty versions 9.2.x and older, 9.3.x (all configurations), and 9.4.x (non-default configuration with RFC2616 compliance enabled) is vulnerable to HTTP request smuggling, caused by improper handling of Chunked Transfer-Encoding chunk size. By sending a specially-crafted request, an attacker could exploit this vulnerability to poison the web cache, bypass web application firewall protection, and conduct XSS attacks.",
+        "score":9.8,
+        "severity":"Critical",
+        "tags":[
+            "request smuggling",
+            "java",
+            "jetty",
+            "http"
+        ],
+        "references":[
+            "https://nvd.nist.gov/vuln/detail/CVE-2017-7657",
+            "https://support.f5.com/csp/article/K10002140"
+        ],
+        "year":"2017"
+    },
+
+    "CVE-2017-9805":{
+        "name":"Apache Struts 2 REST Plugin XStream RCE",
+        "description":"Apache Struts versions 2.1.2 - 2.3.33 and Struts 2.5 - Struts 2.5.12, using the REST plugin, are vulnerable to a Java deserialization attack in the XStream library. The vulnerable application can be accessed at /S2-052/orders on the web server.",
+        "score":8.1,
+        "severity":"High",
+        "tags":[
+            "rce", 
+            "apache",
+            "struts",
+            "plugin",
+            "http"
+        ],
+        "references":[
+            "https://www.imperva.com/blog/cve-2017-9805-analysis-of-apache-struts-rce-vulnerability-in-rest-plugin/",
+            "https://nvd.nist.gov/vuln/detail/cve-2017-9805"
+        ],
+        "year":"2017"
+    },
+
+    "CVE-2017-12611":{
+        "name":"Apache Struts2 S2-053 Remote Code Execution",
+        "description":"Apache Struts 2.0.0 through 2.3.33 and 2.5 through 2.5.10.1, using an unintentional expression in a Freemarker tag instead of string literals can lead to a RCE attack. The vulnerable application can be accessed at /S2-053 on the web server.",
+        "score":9.8,
+        "severity":"Critical",
+        "tags":[
+            "rce", 
+            "freemaker",
+            "apache",
+            "http",
+            "struts"
+        ],
+        "references":[
+            "https://nvd.nist.gov/vuln/detail/CVE-2017-12611",
+            "https://www.ibm.com/support/pages/security-bulletin-vulnerability-apache-struts-2-affects-ibm-spectrum-conductor-spark-cve-2017-9787-cve-2017-9804-and-cve-2017-12611"
+        ],
+        "year":"2017"
+    },
+
+    "CVE-2018-7600":{
+        "name":"Drupalgeddon2",
+        "description":"Drupal versions before 7.58, 8.x before 8.3.9, 8.4.x before 8.4.6, and 8.5.x before 8.5.1, can enable RCE and results from insufficient input validation on the Drupal 7 Form API. Attacks against this vulnerability target AJAX requests composed of renderable arrays from Drupal Form API, which are used to render a requested page through theming system from Drupal.",
+        "score":9.8,
+        "severity":"Critical",
+        "tags":[
+            "rce", 
+            "drupal",
+            "cms",
+            "http"
+        ],
+        "references":[
+            "https://nvd.nist.gov/vuln/detail/cve-2018-7600",
+            "https://unit42.paloaltonetworks.com/unit42-exploit-wild-drupalgeddon2-analysis-cve-2018-7600/"
+        ],
+        "year":"2018"
+    },
+
+    "CVE-2019-0230":{
+        "name":"Apache Struts Double OGNL Evaluation",
+        "description":"In Apache Struts 2.0.0 to 2.5.20, it forced double OGNL evaluation due to insufficient input validation, when evaluated on raw user input in tag attributes, may lead to RCE. Any attacker could exploit this vulnerability by sending a crafted request to the target server.",
+        "score":9.8,
+        "severity":"Critical",
+        "tags":[
+            "rce", 
+            "apache",
+            "http",
+            "struts"
+        ],
+        "references":[
+            "https://nvd.nist.gov/vuln/detail/CVE-2019-0230",
+            "https://www.contrastsecurity.com/security-influencers/apache-struts-cve-2019-0230",
+            "https://www.zerodayinitiative.com/blog/2020/10/7/cve-2019-0230-apache-struts-ognl-remote-code-execution"
+        ],
+        "year":"2019"
+    },
+
+    "CVE-2019-11043":{
+        "name":"PHP-FPM Remote Command Execution",
+        "description":"Under certain configurations, FPM in PHP versions 7.1.x below 7.1.33, 7.2.x below 7.2.24 and 7.3.x below 7.3.11 can be exploited to achieve remote code execution. These configurations require a certain set of preconditions in order for it to be exploitable.",
+        "score":9.8,
+        "severity":"Critical",
+        "tags":[
+            "rce", 
+            "php",
+            "fpm",
+            "nginx",
+            "http"
+        ],
+        "references":[
+            "https://www.trendmicro.com/vinfo/us/security/news/vulnerabilities-and-exploits/php-fpm-vulnerability-cve-2019-11043-can-lead-to-remote-code-execution-in-nginx-web-servers",
+            "https://nvd.nist.gov/vuln/detail/CVE-2019-11043"
+        ],
+        "year":"2019"
+    },
+
+    "CVE-2019-14287":{
+        "name":"Sudo Security Vulnerability",
+        "description":"In Sudo before 1.8.28, an attacker with access to a Runas ALL sudoer account can bypass certain policy blacklists and session PAM modules, and can cause incorrect logging by invoking sudo with a crafted user ID.",
+        "score":8.8,
+        "severity":"High",
+        "tags":[
+            "sudo",
+            "runas",
+            "bypass",
+            "privilege escalation",
+            "privesc"
+        ],
+        "references":[
+            "https://nvd.nist.gov/vuln/detail/CVE-2019-14287",
+            "https://www.whitesourcesoftware.com/resources/blog/new-vulnerability-in-sudo-cve-2019-14287/",
+            "https://blog.aquasec.com/cve-2019-14287-sudo-linux-vulnerability"
+        ],
+        "year":"2019"
+    },
+
+    "CVE-2019-15949":{
+        "name":"Nagios XI",
+        "description":"In Nagios XI version before 5.6.6, allows remote command execution as root. This exploit requires access to the server as the nagios user, or access as the admin user via the web interface. The getprofile.sh script that invoked by downloading a system profile (profile.php?cmd=download), is executed as root via a passwordless sudo entry and it executes check_plugin, which is owned by the nagios user. A user logged into Nagios XI with permissions to modify plugins, or the nagios user on the server, can modify the check_plugin executable and insert malicious commands to execute as root.",
+        "score":8.8,
+        "severity":"High",
+        "tags":[
+            "rce", 
+            "nagios",
+            "http",
+            "php"
+        ],
+        "references":[
+            "https://nvd.nist.gov/vuln/detail/CVE-2019-15949",
+            "https://www.infosecmatter.com/metasploit-module-library/?mm=exploit/linux/http/nagios_xi_plugins_check_plugin_authenticated_rce"
+        ],
+        "year":"2019"
+    },
+
+    "CVE-2020-1938":{
+        "name":"Ghostcat",
+        "description":"Ghostcat is described as Apache JServ Protocol Request Injection and potential Remote Code Execution and it can cause issues if they have Tomcat AJP Connector exposed externally, which is not a recommended configuration in the first place. When using AJP, care must be taken when trusting incoming connections to Apache Tomcat because it treats AJP connections as having higher trust. In Apache Tomcat versions 9.0.0.M1 to 9.0.0.30, 8.5.0 to 8.5.50 and 7.0.0 to 7.0.99, it shipped with an AJP Connector enabled by default that listened on all configured IP addresses. It was expected (and recommended in the security guide) that this Connector would be disabled if not required. If any web application allowed file upload and stored those files within the web application (or the attacker was able to control the content of the web application by some other means) then this, along with the ability to process a file as a JSP, made remote code execution possible.",
+        "score":9.8,
+        "severity":"Critical",
+        "tags":[
+            "rce", 
+            "apache",
+            "tomcat"
+        ],
+        "references":[
+            "https://nvd.nist.gov/vuln/detail/CVE-2020-1938",
+            "https://www.tenable.com/blog/cve-2020-1938-ghostcat-apache-tomcat-ajp-file-readinclusion-vulnerability-cnvd-2020-10487",
+            "https://www.trendmicro.com/en_us/research/20/c/busting-ghostcat-an-analysis-of-the-apache-tomcat-vulnerability-cve-2020-1938-and-cnvd-2020-10487.html"    
+        ],
+        "year":"2020"
+    },
+
+    "CVE-2020-11651":{
+        "name":"Saltstack Salt Remote Command Execution",
+        "description":"In SaltStack Salt versions before 2019.2.4 and 3000 before 3000.2, the salt-master process ClearFuncs class does not properly validate method calls. This allows a remote user to access some methods without authentication. These methods can be used to retrieve user tokens from the salt master and/or run arbitrary commands on salt minions. The first method is _prep_auth_info() method, which returns the user token (Root Key). Attackers can use the token to bypass authentication, resulting in remote command execution within the context of the Salt process on both the master and minions. The second method is _send_pub() method, which can be used to queue messages directly on the master publish server. Such messages can be used to trigger minions to run arbitrary commands as root.",
+        "score":9.8,
+        "severity":"Critical",
+        "tags":[
+            "rce", 
+            "salt",
+            "authentication",
+            "bypass",
+            "key"
+        ],
+        "references":[
+            "https://nvd.nist.gov/vuln/detail/CVE-2020-11651",
+            "https://www.tenable.com/blog/cve-2020-11651-cve-2020-11652-critical-salt-framework-vulnerabilities-exploited-in-the-wild",
+            "https://www.trendmicro.com/vinfo/us/security/news/vulnerabilities-and-exploits/coinminers-exploit-saltstack-vulnerabilities-cve-2020-11651-and-cve-2020-11652"
+        ],
+        "year":"2020"
+    },
+
+    "CVE-2021-3156":{
+        "name":"Baron Samedit",
+        "description":"Sudo before 1.9.5p2 contains an off-by-one error that can result in a heap-based buffer overflow, which allows privilege escalation to root via sudoedit -s and a command-line argument that ends with a single backslash character.",
+        "score":7.8,
+        "severity":"High",
+        "tags":[
+            "sudo", 
+            "buffer",
+            "overflow",
+            "heap",
+            "privilege escalation",
+            "privesc",
+            "root"
+        ],
+        "references":[
+            "https://blog.qualys.com/vulnerabilities-threat-research/2021/01/26/cve-2021-3156-heap-based-buffer-overflow-in-sudo-baron-samedit",
+            "https://nvd.nist.gov/vuln/detail/CVE-2021-3156"
+        ],
+        "year":"2021"
+    },
+
+    "CVE-2021-4034":{
+        "name":"Pwnkit",
+        "description":"Pwnkit is a local privilege escalation vulnerability that was found on polkit's pkexec utility. The pkexec application is a setuid tool designed to allow unprivileged users to run commands as privileged users according predefined policies. The current version of pkexec doesn't handle the calling parameters count correctly and ends trying to execute environment variables as commands. Attacker can leverage this by crafting environment variables in such a way it'll induce pkexec to execute arbitrary code. When successfully executed the attack can cause a local privilege escalation given unprivileged users administrative rights on the target machine.",
+        "score":7.8,
+        "severity":"High",
+        "tags":[
+            "local", 
+            "privilege",
+            "escalation",
+            "polkit",
+            "pkexec",
+            "privilege escalation"
+        ],
+        "references":[
+            "https://nvd.nist.gov/vuln/detail/CVE-2021-4034",
+            "https://blog.qualys.com/vulnerabilities-threat-research/2022/01/25/pwnkit-local-privilege-escalation-vulnerability-discovered-in-polkits-pkexec-cve-2021-4034"
+        ],
+        "year":"2021"
+    },
+
+    "CVE-2021-29447":{
+        "name":"WordPress XXE",
+        "description":"WordPress versions 5.7, 5.6.2, 5.6.1, 5.6, 5.0.11 are affected to XML eXternal Entity vulnerability where an authenticated user with the ability to upload files in the Media Library can upload a malicious WAVE file that could lead to remote arbitrary file disclosure and server-side request forgery (SSRF). This requires WordPress installation to be using PHP 8.",
+        "score":6.5,
+        "severity":"Medium",
+        "tags":[
+            "wordpress", 
+            "xxe",
+            "xml",
+            "php",
+            "cms"
+        ],
+        "references":[
+            "https://blog.wpsec.com/wordpress-xxe-in-media-library-cve-2021-29447/",
+            "https://nvd.nist.gov/vuln/detail/CVE-2021-29447"
+        ],
+        "year":"2021"
+    },
+
+    "CVE-2021-41773":{
+        "name":"Apache Path Traversal Vulnerability",
+        "description":"In Apache HTTP Server 2.4.49, attacker could use a path traversal attack to map URLs to files outside the directories configured by Alias-like directives. If files outside of these directories are not protected by the usual default configuration require-all-denied, these requests can succeed. If CGI scripts are also enabled for these aliased pathes, this could allow for remote code execution. This issue only affects Apache 2.4.49 and not earlier versions.",
+        "score":7.5,
+        "severity":"High",
+        "tags":[
+            "apache", 
+            "http",
+            "path traversal",
+            "rce",
+            "cgi"
+        ],
+        "references":[
+            "https://blog.qualys.com/vulnerabilities-threat-research/2021/10/27/apache-http-server-path-traversal-remote-code-execution-cve-2021-41773-cve-2021-42013",
+            "https://nvd.nist.gov/vuln/detail/CVE-2021-41773"
+        ],
+        "year":"2021"
+    },
+
+    "CVE-2022-22965":{
+        "name":"Spring4Shell",
+        "description":"The name Spring4Shell was picked because Spring Core is a ubiquitous library, similar to log4j which spawned the infamous Log4Shell vulnerability. A Spring MVC or Spring WebFlux application running on JDK 9+ may be vulnerable to remote code execution (RCE) via data binding. The specific exploit requires the application to run on Tomcat as a WAR deployment. If the application is deployed as a Spring Boot executable jar, i.e. the default, it is not vulnerable to the exploit. However, there may be other ways to exploit it. The vulnerable application can be accesed at /spring-form/greeting on the web server.",
+        "score":9.8,
+        "severity":"Critical",
+        "tags":[
+            "rce", 
+            "java",
+            "spring"
+        ],
+        "references":[
+            "https://www.lunasec.io/docs/blog/spring-rce-vulnerabilities/",
+            "https://nvd.nist.gov/vuln/detail/CVE-2022-22965"
+        ],
+        "year":"2022"
+    }
+}

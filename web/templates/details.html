@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dockersploit</title>
+
+    <!-- Custom fonts for this template -->
+    <link href="{{url_for('static', filename = 'vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{url_for('static', filename = 'css/sb-admin-2.min.css')}}" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="{{url_for('static', filename = 'vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+<style>
+.delete_button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #f4511e;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.delete_button:hover {background-color: #B23216}
+
+.delete_button:active {
+  background-color: #B23216;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.run_button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.run_button:hover {background-color: #3e8e41}
+
+.run_button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+</style>
+</head>
+
+<body id="page-top">
+<script>
+    function copyEvent(id)
+    {
+        var str = document.getElementById(id);
+        window.getSelection().selectAllChildren(str);
+        document.execCommand("Copy");
+        document.getElementById('asd').innerHTML = "Copied!";
+    }
+    
+    function copyEventcommand(id)
+    {
+        var str = document.getElementById(id);
+        window.getSelection().selectAllChildren(str);
+        document.execCommand("Copy");
+        document.getElementById('asd1').innerHTML = "Copied!";
+    }
+    
+    function get_usage()
+    {
+        var url = "http://127.0.0.1:5000/usage?c={{cve_number}}";
+	var XMLHttp = new XMLHttpRequest();
+	XMLHttp.open("GET", url, false);
+	XMLHttp.send(null);
+	var a = XMLHttp.responseText;
+	var res = a.split(",");
+	// count total CPU %
+	document.getElementById("big_cpu").innerHTML = parseFloat(res[0]);
+	// count total RAM %
+	document.getElementById("big_ram").innerHTML = parseFloat(res[1]);
+	// count total RAM MB
+	document.getElementById("mem_usage").innerHTML = parseFloat(res[2]);
+    }
+</script>
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+                <div class="sidebar-brand-text mx-3">Dockersploit</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>CVEs</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="tables.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>About</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <!-- Topbar Search -->
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="/search">
+                        <div class="input-group">
+                            <input name="q" type="text" class="form-control bg-light border-0 small" placeholder="Search for CVEs..."
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div style="display: flex;"><h1 class="h3 mb-4 text-gray-800"><h1><b>{{cve_number}}</b>                     
+                    {% if started == True %}
+                    <a href="http://127.0.0.1:5000/delete?cve_number={{cve_number}}" style="display: inline-flex; padding: 5px, 0px, 0px, 0px;">
+                    	<img src="{{url_for('static',filename='img/delete.png')}}" width="30" height="30">
+                    </a>
+                    {% else %}
+                   
+                    <a href="http://127.0.0.1:5000/run?cve_number={{cve_number}}" style="display: inline-flex; padding: 5px, 0px, 0px, 0px;">
+                    	<img src="{{url_for('static',filename='img/play.png')}}"  width="30" height="30">
+                    </a>
+                    {% endif %} </h1>
+                    </div>
+                    {% if started == True %}
+                    <!-- Usage Cards -->
+                    <div class="row">
+                     <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                CPU Usage</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><a id="big_cpu">{{cpu}}</a>%</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <img src="{{url_for('static',filename='img/cpu.png')}}" width="40" height="40">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                RAM Usage</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><a id="big_ram">{{mem}}</a>% (<a id="mem_usage">{{mem_usage}}</a> MB/{{limit}} MB)</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <img src="{{url_for('static',filename='img/ram.png')}}" width="40" height="40">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        {% endif %}
+                        
+                    <b>Name:</b> {{c["name"]}}<br><b>Description:</b> {{c["description"]}}<br><b>Score:</b> {{c["score"]}} ({{c["severity"]}})<br><b>References:</b><br>
+                    {% for item in c["references"] %}
+                    	<a href="{{item}}" target="_blank">{{item}}</a><br>
+                    {% endfor %}
+                    </h1>
+                    {% if started == True %}
+			{% if cve_number in running %}
+			<script>const getusage = setInterval(get_usage, 6000);</script>
+			{% if port_list == {} %}
+
+			The vulnerable container can be accessed through these commands:<br>
+			<a href="#" onclick="copyEventcommand('copy1')"><span id="copy1">docker exec -it {{docker_id[:5]}} /bin/sh</span></a> <b><span id="asd1"></span></b><br><br>
+			{% else %}
+
+			The vulnerable container can be accessed at:<br>
+				<a href="#" onclick="copyEvent('copy')"><span id="copy">127.0.0.1</span></a>
+				<b> <span id="asd"></span></b><br> with these ports:<br>
+			{% for key,value in port_list.items() %}
+				<b>{{key}}</b> -> <b>{{value}}</b><br>
+			{% endfor %}<br><br>{% endif %}
+			<h3><b>Container Information</b></h3>
+			Container ID: {{docker_id}}<br>
+			Container Name: {{docker_name}}<br>
+			{% endif %}
+			{% endif %}
+			<br>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Dockersploit</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>
