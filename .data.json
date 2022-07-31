@@ -329,6 +329,7 @@
             "escalation",
             "polkit",
             "pkexec",
+            "privesc",
             "privilege escalation"
         ],
         "references":[
