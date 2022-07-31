@@ -291,7 +291,7 @@ def cve(args):
             print(f"[+] The {docker_name} container can be accessed through these commands:")
             print(f"docker exec -it {container.id[:5]} /bin/sh")
         else:
-            print("[+] The {docker_name} container can be accessed at 127.0.0.1 through these service(s) and port(s):")
+            print(f"[+] The {docker_name} container can be accessed at 127.0.0.1 through these service(s) and port(s):")
             for port in port_list:
                 print(f"{p[port][0]['HostPort']} -> {port} {servicesPort[port.split('/')[0]]}")
     
@@ -324,7 +324,7 @@ def cve(args):
                 sys.stdout.buffer.write(c)
             print()
         else:
-            print("The current operating system is not supprted! Exiting...")
+            print("The current operating system is not supported! Exiting...")
             sys.exit(0)
         print("The container can be accessed at 127.0.0.1 through these ports:")
         for key in servicesPort:
@@ -390,7 +390,7 @@ def read_json(file_name, user_input, key, value=0):
             for key in keys:
                 if user_input in str(res[cve][key]):
                     valid_cve.append(cve)
-        return valid_cve
+        return list(set(valid_cve))
     elif value == 1: # return details json data
         keys = ["name", "description", "score", "severity", "references"]
         details = {}
@@ -403,7 +403,7 @@ def read_json(file_name, user_input, key, value=0):
         for cve in cve_number:
             if user_input in str(res[cve][key]):
                 valid_cve.append(cve)
-        return valid_cve
+        return return list(set(valid_cve))
 
 def save_result(result):
     fname = '.tmp-result'
