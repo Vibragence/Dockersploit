@@ -403,7 +403,7 @@ def read_json(file_name, user_input, key, value=0):
         for cve in cve_number:
             if user_input in str(res[cve][key]):
                 valid_cve.append(cve)
-        return return list(set(valid_cve))
+        return list(set(valid_cve))
 
 def save_result(result):
     fname = '.tmp-result'
